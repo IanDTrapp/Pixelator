@@ -13,7 +13,7 @@ public class P3 {
     public static void main(String[] args) {
 
 	// Displays a message if user enters command line arguments
-	if (args.length > 0) {
+	if ((args.length > 0) && (!args[0].contains("-"))) {
 	    System.out.println("Please run the program with no arguments");
 	    System.exit(0);
 	}
@@ -29,19 +29,22 @@ public class P3 {
 	file.add(quit);
         quit.addActionListener(gui);
 	bar.add(file);
+	
+	// Creates help menu and adds functions getting started and help
 	helpMenu = new JMenu ("Help");
 	helpMenu.setMnemonic(KeyEvent.VK_H);
 	file.getAccessibleContext().setAccessibleDescription("This menu contains information about the program");
+	
+	
 	gettingStarted = new JMenuItem("Get Started");
 	gettingStarted.addActionListener(gui);
 	helpMenu.add(gettingStarted);
-	help = new JMenuItem("Help");
+	help = new JMenuItem("About");
 	help.addActionListener(gui);
 	helpMenu.add(help);
 	bar.add(helpMenu);
 	
-	
-	
+	// Sete the menu bar for the frame
 	frame.setJMenuBar(bar);
 
 	// Sets default operations for the program
@@ -51,7 +54,7 @@ public class P3 {
 	frame.getContentPane().add(new GUI());
 
 	// Sets the size and sets it to visable
-	frame.setSize(700,700);
+	frame.setSize(800,800);
 	frame.setVisible(true);
 	
 	

@@ -9,8 +9,10 @@ import java.awt.image.WritableRaster;
 public class Pixelize {
     public String pixelize(String pixelSize, BufferedImage img){
 	String end = "No output";
+	// Gets image width and height for pixelization algorithm
 	int imgW = img.getWidth(); 
 	int imgH = img.getHeight();
+	// Function for small pixel selection
 	if (pixelSize == "small"){
 	    final int SIZE = 5;
 	    Raster ras = img.getData();
@@ -19,7 +21,7 @@ public class Pixelize {
 		for (int x = 0; x < imgW; x += SIZE) {
 		    double[] pixel = new double[3];
 		    pixel = ras.getPixel(x,y,pixel);
-		    
+		    // Applies pixel color to surrounding pixels
 		    for (int a = y; (a < y + SIZE) && (a < imgH); a++) {
 			for (int b = x; (b < x + SIZE) && (b < imgW); b++){
 			    writeRas.setPixel(b,a,pixel);
@@ -27,6 +29,7 @@ public class Pixelize {
 		    }
 		}
 	    }
+	    // Saves the photo and returns the string "filename"
 	    img.setData(writeRas);
 	    String outputSmall = "outputSmall.png";
 	    try {
@@ -36,7 +39,7 @@ public class Pixelize {
 	    return outputSmall;
 	}
     
-
+	// Function for medium pixel selection
 	if (pixelSize == "medium"){
 	    final int SIZE = 15;
             Raster ras = img.getData();
@@ -45,7 +48,7 @@ public class Pixelize {
                 for (int x = 0; x < imgW; x += SIZE) {
                     double[] pixel = new double[3];
                     pixel = ras.getPixel(x,y,pixel);
-
+		    // Applies pixel colors to surrounding pixels
                     for (int a = y; (a < y + SIZE) && (a < imgH); a++) {
                         for (int b = x; (b < x + SIZE) && (b < imgW); b++){
                             writeRas.setPixel(b,a,pixel);
@@ -53,6 +56,7 @@ public class Pixelize {
                     }
                 }
             }
+	    // Saves the photo and returns the string "filename"
             img.setData(writeRas);
             String outputMedium = "outputMedium.png";
             try {
@@ -61,6 +65,7 @@ public class Pixelize {
             } catch (IOException ex) {}
             return outputMedium;
 	}
+	// Function for large pixel selection
 	if (pixelSize == "large"){
 	    final int SIZE = 25;
             Raster ras = img.getData();
@@ -69,7 +74,7 @@ public class Pixelize {
                 for (int x = 0; x < imgW; x += SIZE) {
                     double[] pixel = new double[3];
                     pixel = ras.getPixel(x,y,pixel);
-
+		    // Applies pixel color to surrounding pixels
                     for (int a = y; (a < y + SIZE) && (a < imgH); a++) {
                         for (int b = x; (b < x + SIZE) && (b < imgW); b++){
                             writeRas.setPixel(b,a,pixel);
@@ -77,6 +82,7 @@ public class Pixelize {
                     }
                 }
             }
+	    // Saves the photo and returns the string "filename"
             img.setData(writeRas);
             String outputLarge = "outputLarge.png";
             try {
@@ -85,6 +91,7 @@ public class Pixelize {
             } catch (IOException ex) {}
             return outputLarge;
 	}
+	// Satifies the need for a return type that doesn't satisfy if-conditions
 	return end;
     }
 }

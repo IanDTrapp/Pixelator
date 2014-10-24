@@ -139,7 +139,6 @@ public class GUI extends JPanel implements ActionListener {
 			finishedImage.repaint();
 			
 		    } catch (IOException ex) {}
-		    
 		}
 		// Function for if "medium" was selected
 		if (medium.isSelected()){
@@ -183,7 +182,7 @@ public class GUI extends JPanel implements ActionListener {
 	}
 	// Pop up window for help
 	if (e.getSource() == p3.help) {
-	    JOptionPane.showMessageDialog(null, "Please read the \"Getting Started\" message to learn more about the program!", "Help",JOptionPane.INFORMATION_MESSAGE);
+	    JOptionPane.showMessageDialog(null, "Author: Ian Trapp \n Created on October 24th, 2014", "About",JOptionPane.INFORMATION_MESSAGE);
 	}
 	// Pop up window for getting started
 	if (e.getSource() == p3.gettingStarted) {
@@ -200,7 +199,6 @@ public class GUI extends JPanel implements ActionListener {
 	    container.revalidate();
 	    container.repaint();
 	}
-
     }
 }
 
