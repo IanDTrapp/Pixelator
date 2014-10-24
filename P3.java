@@ -2,6 +2,8 @@
 */
 import java.awt.*;
 import javax.swing.*;
+import java.awt.BorderLayout;
+import javax.swing.JScrollPane;
 
 public class P3 {
     public static void main(String[] args) {
@@ -10,11 +12,12 @@ public class P3 {
 	
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setLocationRelativeTo(null);
-
+	
 	frame.getContentPane().add(new GUI());
 	
-	frame.pack();
+	frame.setSize(700,700);
 	frame.setVisible(true);
-
+	
+	
     }
 }
